@@ -18,6 +18,10 @@ public class Animal {
         this.isMammal = isMammal;
     }
 
+    public String getname(){
+        return name;
+    }
+
     @Override
     public String toString() {
         return "Animal{" +

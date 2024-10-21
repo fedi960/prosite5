@@ -1,6 +1,6 @@
 package gestionAnimal;
 
-public class Aquatic extends Animal {
+public abstract class Aquatic extends Animal {
     private String habitat ;
     float swimmingSpeed , swimmingDepth ;
     public Aquatic(String habitat , String name ,String family , int age , boolean isMammal) {
@@ -20,7 +20,7 @@ public class Aquatic extends Animal {
     public String toString() {
         return "Aquatic [habitat=" + habitat + "] , " + super.toString();
     }
-    public void swim(){
-        System.out.println("This aquatic animal is swimming");
-    }
+    public abstract void swim();
+
+
 }

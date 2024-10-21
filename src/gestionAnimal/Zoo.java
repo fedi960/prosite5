@@ -3,9 +3,11 @@ package gestionAnimal;
 public class Zoo {
 
     static final int NUMBER_OF_CAGES = 25;
-    Animal[] animals;
-    String name, city;
+    private Animal[] animals;
+    private String name, city;
     int nbrAnimals;
+    private int nbrAquatics;
+    private Aquatic[] aquaticAnimals;
 
     public Zoo() {
     }
@@ -14,6 +16,45 @@ public class Zoo {
         animals = new Animal[NUMBER_OF_CAGES];
         this.name = name;
         this.city = city;
+        aquaticAnimals = new Aquatic[10];
+    }
+
+
+
+    public Aquatic getAquaticAnimalsdei(int i) {
+        return aquaticAnimals[i];
+    }
+
+    public boolean addAquatic(Aquatic a) {
+        if (a.age < 0) {
+            System.out.println("enter a logic age");
+            return false;
+        }
+        if (searchAnimal(a) != -1)
+            return false;
+        if (this.isZooFull())
+            return false;
+        aquaticAnimals[nbrAquatics] = a;
+        nbrAquatics++;
+        return true;
+    }
+
+    public float maxPenguinSwimmingDepth(int i) {
+
+            return aquaticAnimals[i].swimmingDepth;
+
+    }
+
+    public void displayNumberOfAquaticsByType(){
+        int d=0;
+        int p=0;
+        for (int i=0 ;i < nbrAquatics;i++){
+            if (maxPenguinSwimmingDepth(i)==0){
+                d++;
+            }else
+                p++;
+        }
+        System.out.println("The number of aquatic penguins is " + p+"The number of aquatic dolphin is"+d);
     }
 
     static Zoo comparerZoo(Zoo z1, Zoo z2) {
@@ -72,6 +113,15 @@ public class Zoo {
         return index;
     }
 
+    public int searchAquatic(Aquatic a) {
+        int index = -1;
+        for (int i = 0; i < nbrAquatics; i++) {
+            if (a.name == animals[i].name)
+                return i;
+        }
+        return index;
+    }
+
     boolean isZooFull() {
         return nbrAnimals == NUMBER_OF_CAGES;
     }
@@ -80,4 +130,9 @@ public class Zoo {
     public String toString() {
         return "Name: " + name + ", City: " + city + ", N° Cages: " + NUMBER_OF_CAGES + " N° animals: " + nbrAnimals;
     }
+
+    public int getNbrAquatics() {
+        return nbrAquatics;
+    }
+
 }

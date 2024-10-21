@@ -21,5 +21,9 @@ public class Penguin extends Aquatic{
     public String toString() {
         return "Penguin [swimming Depthv=" + swimmingDepthv + "] , " + super.toString();
     }
+
+    public void swim(){
+        System.out.println("This penguin is swimming");
+    }
 }
 
